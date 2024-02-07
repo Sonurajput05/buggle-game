@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bubble</title>
+</head>
+<style>
+    body {
+        background-color: rgb(173, 238, 173);
+    }
+
+    .main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .panel {
+        background-color: white;
+        width: 950px;
+        height: 550px;
+        /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        border-radius: 20px;
+        overflow: hidden;
+
+    }
+
+    .paneltop {
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        width: 950px;
+        height: 100px;
+        background-color: rgb(2, 59, 2);
+    }
+
+    .score {
+        margin: 10px;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+
+    }
+
+    .box {
+        background-color: aliceblue;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 25px;
+        color: rgb(4, 82, 49);
+
+    }
+
+    .pbtm {
+
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: center; */
+        padding: 20px;
+    }
+
+    .bubble {
+        width: 40px;
+        height: 40px;
+        background-color: green;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        color: white;
+    }
+
+    .bubble:hover {
+        background-color: rgb(2, 46, 2);
+    }
+
+    .bubble_num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="panel">
+            <div class="paneltop">
+                <div class="score">
+                    <h4>Hit</h4>
+                    <div id="hit" class="box">5</div>
+                </div>
+                <div class="score">
+                    <h4>Timer</h4>
+                    <div  id="timer" class="box">60</div>
+                </div>
+                <div class="score">
+                    <h4>Score</h4>
+                    <div id="score" class="box">5</div>
+                </div>
+            </div>
+
+            <div class="pbtm">
+                <div class="bubble">
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script>
+
+        
+            let bubble = "";
+            
+            for (let i = 1; i <= 105; i++) {
+                let num = Math.floor(Math.random()*10)
+                bubble += `<div class="bubble">${num}</div>`;
+            }
+            console.log(bubble);
+            document.querySelector(".pbtm").innerHTML = bubble;
+
+
+
+
+
+            let timer = 60;
+            function runTimer(){
+                var timerint = setInterval(function () {
+                    if (timer > 0) {
+                        timer--;
+                        document.querySelector("#timer").textContent = timer;
+                       
+                    }else{
+                        clearInterval (timerint);
+                    }
+                   
+                },1000);
+            }
+        
+
+
+           
+           function getNewHit(){
+            let rn = Math.floor(Math.random()*10);
+            document.querySelector("#hit").textContent = rn;
+           
+           }
+        console.log(getNewHit);
+
+
+
+
+
+        function getNewScore(){
+            let sc = Math.floor(Math.random()*10);
+            document.querySelector("#score").textContent = sc;
+           
+           }
+        console.log(getNewScore);
+
+
+        
+           
+     runTimer();
+     getNewHit();
+     getNewScore();
+
+    </script>
+
+
+</body>
+
+</html>
